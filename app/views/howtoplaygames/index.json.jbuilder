@@ -1,0 +1,1 @@
+json.array! @howtoplaygames, partial: 'howtoplaygames/howtoplaygame', as: :howtoplaygame

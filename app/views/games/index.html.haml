@@ -1,0 +1,58 @@
+!!!
+%html.no-js{:lang => "en"}
+  %head
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    %title Foundation | Welcome
+    %link{:href => "http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css", :rel => "stylesheet"}/
+    %link{:href => "http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css", :rel => "stylesheet", :type => "text/css"}/
+  %body
+    :javascript
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-2195009-2', 'auto');
+      ga('send', 'pageview');
+
+      ga('create', 'UA-2195009-27', 'auto', {name: "foundation"});
+      ga('foundation.send', 'pageview');
+    .top-bar
+      .top-bar-left
+        %ul.menu
+          %li.menu-text Blog
+          %li
+            %a{:href => "#"} One
+          %li
+            %a{:href => "#"} Two
+          %li
+            %a{:href => "#"} Three
+    .callout.large.primary
+      .row.column.text-center
+        %h1 the girl gamer
+        %h2.subheader Games I Love :)
+    - @games.order(:created_at).each do |game|
+      .row.medium-8.large-7.columns
+        .blog-post
+          %h3
+            = game.name
+            %small= "#{game.created_at.strftime("%m/%d/%y")}"
+            .button-group.round
+              %a.button.mr-poopy-pants{:href => edit_game_path(game.id)} Edit
+              %a.button.grape{:href => howtoplaygame_path(game.id)} Instructions
+              = link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button alert radius'
+          = image_tag game.avatar.url(:medium)
+          %p= game.description
+          .callout
+          %ul.menu.simple
+            %li
+              %a{:href => "#"} Author: Celia
+            %li
+              %a{:href => "#"} Comments: 3
+      
+    %script{:src => "https://code.jquery.com/jquery-2.1.4.min.js"}
+    %script{:src => "http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"}
+    :javascript
+      $(document).foundation();
+    %script{:src => "https://intercom.zurb.com/scripts/zcom.js", :type => "text/javascript"}

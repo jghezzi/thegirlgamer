@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Instructions:
+  = @howtoplaygame.instructions
+%p
+  %b Game:
+  = @howtoplaygame.game_id
+
+= link_to 'Edit', edit_howtoplaygame_path(@howtoplaygame)
+\|
+= link_to 'Back', howtoplaygames_path

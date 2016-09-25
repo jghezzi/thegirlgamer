@@ -1,0 +1,23 @@
+%h1 Listing howtoplaygames
+
+%table
+  %thead
+    %tr
+      %th Instructions
+      %th Game
+      %th
+      %th
+      %th
+
+  %tbody
+    - @howtoplaygames.each do |howtoplaygame|
+      %tr
+        %td= howtoplaygame.instructions
+        %td= howtoplaygame.game_id
+        %td= link_to 'Show', howtoplaygame
+        %td= link_to 'Edit', edit_howtoplaygame_path(howtoplaygame)
+        %td= link_to 'Destroy', howtoplaygame, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Howtoplaygame', new_howtoplaygame_path

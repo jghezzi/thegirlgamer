@@ -1,0 +1,16 @@
+= form_for @howtoplaygame do |f|
+  - if @howtoplaygame.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@howtoplaygame.errors.count, "error")} prohibited this howtoplaygame from being saved:"
+      %ul
+        - @howtoplaygame.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :instructions
+    = f.text_area :instructions
+  .field
+    = f.label :game_id
+    = f.select :game_id, Game.all.collect { |g| [g.name, g.id]}
+  .actions
+    = f.submit 'Save'
